@@ -1,0 +1,28 @@
+.username {
+    background-image: linear-gradient(to right, red, orange, #FFA000, green, blue, navy, purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.overflow-hidden {
+    /*white-space: nowrap;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    --webkit-line-clamp: 3;
+    --webkit-box-orient: vertical;
+    line-height: 1.2em;
+    height: 3.6em;
+    word-wrap: break-word;
+}
+
+.set-background {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('/View/common/hero-image.jpg');
+}
+
+.blur-background {
+    background: rgba(100, 100, 146, 0.3);
+}
