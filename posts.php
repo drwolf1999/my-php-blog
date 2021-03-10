@@ -1,15 +1,13 @@
 <?php
-require_once ("include/db_info.php");
-require_once ("include/utility.function.php");
-
-// CATEGORIES
+require_once ("Controller/post.php");
 require_once ("Controller/category.php");
 $categories = getCategory();
 
 // POSTS
-$posts = array();
-
-$sql = "SELECT `title`, `content`, `postId`, `writeDate` FROM `post`";
+$page = 1;
+if (isset($_GET['page'])) {
+    $page = intval($_GET['page']);
+}
 
 $selectedCategory = null;
 if (isset($_GET['category'])) {
@@ -18,19 +16,12 @@ if (isset($_GET['category'])) {
     } catch (Exception $e) {
         require ("View/error.php");
     }
-    $sql .= " WHERE `categoryId` = ".$selectedCategory;
 }
+$onePage = 6;
 
-$page = 1;
-if (isset($_GET['page'])) {
-    $page = intval($_GET['page']);
-}
-$page -= 1;
-$sql .= " ORDER BY `categoryId` ASC LIMIT ".($page * 5).", 5";
+$result = getPosts($selectedCategory, $page - 1, $onePage);
 
-
-$result = pdo_query($sql);
-
+$posts = array();
 foreach ($result as $r) {
     $stripContent = $r['content'];
     $stripContent = preg_replace("/<img[^>]+\>/i", "[그림]&nbsp;", $stripContent);
@@ -42,5 +33,7 @@ foreach ($result as $r) {
             "time" => dateToString($r['writeDate'])
         ));
 }
+
+$pagination = getPagination($page, getPostSize(), $onePage);
 
 require ("View/posts.php");
