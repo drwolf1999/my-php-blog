@@ -20,7 +20,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url('/View/common/hero-image.jpg');
+    background-image: url('/View/common/viewPostBackground.jpg');
 }
 
 .blur-background {

@@ -1,6 +1,7 @@
 <?php
-require ("include/db_info.php");
-require ("include/utility.function.php");
+require_once ("include/utility.function.php");
+require_once ("Controller/post.php");
+require_once ("Controller/comment.php");
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -12,11 +13,8 @@ if ($method != 'GET') {
 
 $id = $_GET['id'];
 
-$sql = "SELECT `title`, `content`, `writeDate` FROM `post` WHERE `postId` = ?";
-$result = pdo_query($sql, $id)[0];
+$post = getPost($id);
 
-$title = $result['title'];
-$content = $result['content'];
-$date = dateToString($result['writeDate']);
+$comment = getComments($post['id']);
 
 require ("View/viewPost.php");

@@ -26,8 +26,8 @@ function pdo_query($sql) {
         $stmt->closeCursor();
         return $result;
     } catch (PDOException $e) {
-        $error_msg = "error occur";
-        include("View/error.php");
+        $error_msg = "error occur".$e;
+        include(__DIR__."/../View/error.php");
         exit(0);
     }
     return null;

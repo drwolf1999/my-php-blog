@@ -19,6 +19,7 @@
 
     <div id="navbar-menu-for-mobile" class="navbar-menu">
         <div class="navbar-start">
+            <a class="navbar-item" href="/about.php">About</a>
             <a class="navbar-item" href="/posts.php">Posts</a>
 
             <div class="navbar-item has-dropdown is-hoverable">
@@ -32,7 +33,7 @@
                         <i class="fab fa-instagram"></i>&nbsp;Instagram
                     </a>
                     <hr class="navbar-divider">
-                    <a class="navbar-item">Report an issue</a>
+                    <a class="navbar-item" href="https://github.com/drwolf1999/my-php-blog/issues">Report an issue</a>
                 </div>
             </div>
         </div>

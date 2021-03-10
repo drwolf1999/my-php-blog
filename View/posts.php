@@ -1,6 +1,7 @@
 <?php require ("common/top.php"); ?>
 
 <div class="container is-widescreen">
+    <?php require("common/category_select.php"); ?>
 <?php
 if (isset($posts)) {
     foreach ($posts as $p) {
@@ -40,4 +41,16 @@ if (isset($posts)) {
 </div>
 
 <?php require ("common/script.php") ?>
+<script>
+    $(document).ready(function () {
+        $('select#category').on('change', function() {
+            let selectedCategory = $('select#category').val();
+            let address = `/posts.php`;
+            if (selectedCategory !== null && selectedCategory !== '') {
+                address += `?category=${selectedCategory}`;
+            }
+            location.href = address;
+        });
+    });
+</script>
 <?php require ("common/bottom.php"); ?>
