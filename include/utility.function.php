@@ -10,7 +10,7 @@ function dateTimeToString($date) {
 function getPagination($page, $totalItems, $onePage) {
     $ret = array();
     $diff = 2;
-    $totalPage = ($totalItems + $onePage - 1) / $onePage;
+    $totalPage = intval(($totalItems + $onePage - 1) / $onePage);
 
     $firstChunk = array(1, 2, 3);
     $lastChunk = array($totalPage - 2, $totalPage - 1, $totalPage);

@@ -17,7 +17,7 @@ if (isset($_GET['category'])) {
         require ("View/error.php");
     }
 }
-$onePage = 6;
+$onePage = 4;
 
 $result = getPosts($selectedCategory, $page - 1, $onePage);
 
@@ -34,6 +34,6 @@ foreach ($result as $r) {
         ));
 }
 
-$pagination = getPagination($page, getPostSize(), $onePage);
+$pagination = getPagination($page, getPostSize($selectedCategory), $onePage);
 
 require ("View/posts.php");

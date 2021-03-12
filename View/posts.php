@@ -40,13 +40,11 @@ if (isset($posts)) {
 ?>
 <?php if (isset($pagination) && isset($page)) { ?>
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <a class="pagination-previous">Previous</a>
-        <a class="pagination-next">Next page</a>
         <ul class="pagination-list">
             <?php foreach ($pagination as $p) { ?>
                 <li>
                     <?php if (is_numeric($p)) { ?>
-                        <a href="<?= '/posts.php?page='.$p ?>" class="pagination-link<?= ($p == $page) ? ' is-current' : '' ?>" aria-label="Goto page <?= $p ?>"><?= $p ?></a>
+                        <a href="<?= '/posts.php?page='.$p.(isset($selectedCategory) && $selectedCategory != null ? '&category='.$selectedCategory : '') ?>" class="pagination-link<?= ($p == $page) ? ' is-current' : '' ?>" aria-label="Goto page <?= $p ?>"><?= $p ?></a>
                     <?php } else { ?>
                         <span class="pagination-ellipsis">&hellip;</span>
                     <?php } ?>

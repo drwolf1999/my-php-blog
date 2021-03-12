@@ -33,10 +33,16 @@ function getPosts($category, $page, $onePage) {
     return pdo_query($sql);
 }
 
-function getPostSize() {
+function getPostSize($category) {
     $sql = "SELECT COUNT(`postId`) AS c FROM `post`";
 
-    $r = pdo_query($sql);
+    if ($category != null) {
+        $sql .= " WHERE `categoryId` = ?";
+        $r = pdo_query($sql, $category);
+    } else {
+        $r = pdo_query($sql);
+    }
+
 
     return $r[0]['c'];
 }
